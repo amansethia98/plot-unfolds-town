@@ -219,7 +219,7 @@ const GC=gamingCafe(MX+16,MS.z-3,(window.TL&&window.TL.cafe)||0);
 ambassador(MX-HALF+8,MS.z+HALF-6,0);ambassador(MX+HALF-8,-1.8,Math.PI,'#2b2b2b');
 // ---- BRAND HOARDINGS (empty, free 10 days) ----
 const HO=[];function hoarding(x,z,ry){const g=grp(x,z,ry);for(const s of[-3,3])mesh(box(.35,6,.35),'#555',s,3,0,g);mesh(box(8.4,4.4,.3),'#ffffff',0,7.6,-.1,g);
- const t=board('YOUR BRAND HERE\nFree for 10 days\nDM @plot.unfolds','#ffd23a','#7a1a0a',8,4,0,7.6,.07,0,'bold 64px DejaVu Sans',g);mesh(box(8.6,.2,.8),'#333',0,5.3,.3,g);claim(x,z,9,2);HO.push(g);return g}
+ const t=board('YOUR BRAND HERE\nFree for 10 days\nDM @plot.unfolds','#ffd23a','#7a1a0a',8,4,0,7.6,.07,0,'bold 50px DejaVu Sans',g);mesh(box(8.6,.2,.8),'#333',0,5.3,.3,g);claim(x,z,9,2);HO.push(g);return g}
 hoarding(MX+HALF-6,MS.z-HALF+6,-.4);hoarding(MX-HALF+6,MS.z-HALF+6,.4);hoarding(30,-1.5,Math.PI);hoarding(-40,-1.5,Math.PI);hoarding(SEC[1].x+20,8,0);
 // ---- GHAT SECTOR along the river ----
 ghat(-20);temple(-60,8);peepal(20,9);well(50,8);rangoli(-14,4,1.4);

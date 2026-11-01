@@ -13,6 +13,9 @@
 .tag.villa{background:linear-gradient(#b46cff,#7a3fd0);border-color:#e3c9ff}
 .tag.hl{background:linear-gradient(#ff5c95,#e0246a);border-color:#fff;font-size:15px;z-index:5;padding:6px 12px}
 .sec{position:absolute;left:0;top:0;display:none;text-align:center;background:rgba(255,250,240,.92);border:2px solid #b2401a;border-radius:10px;padding:4px 10px;box-shadow:0 3px 10px rgba(0,0,0,.25);white-space:nowrap}
+.lm{position:absolute;left:0;top:0;display:none;text-align:center;background:linear-gradient(#1a2350,#0d1330);border:2px solid #39ff6a;border-radius:10px;padding:5px 11px;box-shadow:0 0 12px rgba(57,255,106,.6);white-space:nowrap;transform-origin:50% 100%;z-index:4}.lm.ho{background:linear-gradient(#ffd23a,#f0a800);border-color:#b2001a;box-shadow:0 2px 8px rgba(0,0,0,.35)}.lm.ho b{color:#b2001a}.lm.ho span{color:#3a1f0a}
+#pl{position:fixed;right:12px;bottom:56px;z-index:20;border:0;border-radius:22px;background:linear-gradient(#ff8a1a,#e0601a);color:#fff;font:800 15px system-ui;padding:11px 16px;box-shadow:0 3px 10px rgba(0,0,0,.3)}#plist{position:fixed;right:12px;bottom:104px;z-index:20;display:none;background:#fffaf0;border:2px solid #e0601a;border-radius:12px;max-height:55vh;overflow:auto;box-shadow:0 4px 14px rgba(0,0,0,.3)}#plist button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #f0d9b8;background:none;font:600 15px system-ui;padding:12px 16px;color:#3a1f0a;min-width:230px}
+.lm b{display:block;color:#39ff6a;font:800 14px/1.1 system-ui,sans-serif}.lm span{font-size:11px;color:#e8f0ff}
 .sec b{display:block;color:#b2401a;font:800 14px/1.1 Georgia,serif}.sec span{font-size:11px;color:#3a1f0a}
 header{position:fixed;top:0;left:0;right:0;padding:calc(env(safe-area-inset-top) + 10px) 12px 10px;background:linear-gradient(rgba(255,248,232,.97),rgba(255,248,232,.88));border-bottom:3px solid #ff8a1a;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 h1{margin:0;font:800 20px Georgia,serif;color:#b2401a;letter-spacing:.3px}
@@ -41,11 +44,11 @@ body.loaded #load{opacity:0;pointer-events:none}
 <div id="hint">Drag to look around · pinch / scroll to zoom · right-drag or two fingers to pan</div>
 <div id="load"><div class="spin"></div>Building the town…</div>
 <script type="module">
-import './town.js';
+import './town.js?v=20261101163203';
 const $=id=>document.getElementById(id),T=window.TOWN;
 $('count').textContent=`${T.followers} residents · ${T.sectors.length} sectors`;
 const info=$('info');
-function show(h){if(!h){info.style.display='block';info.innerHTML=`No house for that name yet. <b>Follow @plot.unfolds</b> and you get one in the next daily update.<div class="row"><a href="https://www.instagram.com/plot.unfolds/" target="_blank" rel="noopener">Follow</a><button onclick="info.style.display='none'">Close</button></div>`;return}
+function show(h){if(h&&h.landmark){info.style.display='block';info.innerHTML=`<b>${h.landmark.n}</b><br>${h.landmark.sub}<div class="row"><button onclick="flyHome();info.style.display='none'">Whole town</button><button onclick="info.style.display='none'">Close</button></div>`;return}if(!h){info.style.display='block';info.innerHTML=`No house for that name yet. <b>Follow @plot.unfolds</b> and you get one in the next daily update.<div class="row"><a href="https://www.instagram.com/plot.unfolds/" target="_blank" rel="noopener">Follow</a><button onclick="info.style.display='none'">Close</button></div>`;return}
  info.style.display='block';info.innerHTML=`<b>@${h.username}</b>'s ${h.type==='villa'?'villa 🏰':'house 🏠'}<br>${h.society}, Sector ${h.sector} · resident since ${h.since}${h.upgrades.length?'<br>Upgrades: '+h.upgrades.join(', '):''}<br><small>Tag 3 friends in our latest reel's comments to upgrade to a villa.</small><div class="row"><button id="home">Whole town</button><button onclick="info.style.display='none'">Close</button></div>`;$('home').onclick=()=>{flyHome();info.style.display='none'}}
 window.info=info;
 function go(v){$('sug').innerHTML='';$('q').blur();show(findHouse(v))}
@@ -53,4 +56,8 @@ $('f').onsubmit=e=>{e.preventDefault();go($('q').value)};
 $('q').oninput=()=>{$('sug').innerHTML=suggest($('q').value).map(u=>`<li data-u="${u}">@${u}</li>`).join('')};
 $('sug').onclick=e=>{const u=e.target.dataset.u;if(u){$('q').value='@'+u;go(u)}};
 const p=new URLSearchParams(location.search).get('u')||location.hash.slice(1);if(p){$('q').value='@'+p.replace(/^@/,'');setTimeout(()=>go(p),400)}
+const pl=document.createElement('button');pl.id='pl';pl.textContent='📍 Places';document.body.appendChild(pl);const ls=document.createElement('div');ls.id='plist';document.body.appendChild(ls);
+ls.innerHTML=window.LANDMARKS.map((L,i)=>`<button data-i="${i}">${L.n}</button>`).join('');
+pl.onclick=()=>{ls.style.display=ls.style.display==='block'?'none':'block'};
+ls.onclick=e=>{const i=e.target.closest('button')?.dataset.i;if(i==null)return;ls.style.display='none';const L=flyLM(+i);show({landmark:L})};
 </script></body></html>

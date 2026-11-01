@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.js';
 import {OrbitControls} from './vendor/OrbitControls.js';
-const DATA=await (await fetch('houses.json',{cache:'no-cache'})).json();const SEC=DATA.sectors,G=DATA.grid;const ROWS=Math.ceil(SEC.length/G.cols);const GS=Math.max(560,ROWS*G.pitch*2+300);
+const DATA=await (await fetch('houses.json?v='+Date.now(),{cache:'no-store'})).json();const SEC=DATA.sectors,G=DATA.grid;const ROWS=Math.ceil(SEC.length/G.cols);const GS=Math.max(560,ROWS*G.pitch*2+300);
 // ---------- seeded rng ----------
 let _s = 7*9301+49297; const R=()=>((_s=(_s*16807)%2147483647)/2147483647);
 const pick=a=>a[Math.floor(R()*a.length)];
@@ -214,13 +214,26 @@ function gamingCafe(x,z,t0){const g=popg(x,z,0,t0);mesh(box(9,.08,7),'#cfb48a',0
   const kid=person(0,0,null,pick(cloth),true);g.attach(kid);kid.position.set(xx,0,2.95);kid.rotation.y=Math.PI;}
  board('LAN PARTY\nTONIGHT','#e83a5a','#fff6c0',2,1.2,3.4,1.2,3.3,0,'bold 60px DejaVu Sans',g);
  board('by @rathod750728 · 8 likes','#fff6d8','#7a2a0a',4.6,.55,-1.4,.5,1.95,0,'bold 40px DejaVu Sans',g);
- mesh(cyl(.3,.3,.15,10),'#c0c0c0',2.6,3.6,-2,g,{metalness:.6});claim(x,z,9,7);return g}
+ mesh(cyl(.3,.3,.15,10),'#c0c0c0',2.6,3.6,-2,g,{metalness:.6});
+ for(const s of[-3,3])mesh(box(.25,3,.25),'#333',s,4.9,-.6,g);
+ const rs=board('🎮 GAMING CAFE','#111a3a','#39ff6a',8.6,2.2,0,6.6,-.6,0,'bold 64px DejaVu Sans Mono',g);rs.material.side=THREE.DoubleSide;rs.rotation.x=-.35;
+ const top=board('GAMING CAFE','#2b3f8f','#39ff6a',7.6,4.6,0,3.46,-.6,0,'bold 90px DejaVu Sans Mono',g);top.rotation.x=-Math.PI/2;
+ claim(x,z,9,7);return g}
 const GC=gamingCafe(MX+16,MS.z-3,(window.TL&&window.TL.cafe)||0);
+// landmark labels (always visible HTML tags) + searchable landmarks
+const LM=[{k:['gaming cafe','gaming','cafe','rathod750728'],n:'🎮 Gaming Cafe',sub:'Sector 3 · by @rathod750728',x:MX+16,y:9,z:MS.z-3},{k:['food market','market','food'],n:'🍢 Food Market',sub:'Sector 3 · by @ft.georrrrrr',x:MX,y:7,z:MZ}];
+for(const L of LM){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${L.n}</b><span>${L.sub}</span>`;tagsEl.appendChild(el);L.el=el}
+{const L=[{k:['villa','plot.unfolds'],n:'🏰 plot.unfolds Villa',sub:'Tag 3 friends to get a villa',x:OWNX,y:11,z:OWNZ},{k:['ghat','river','temple'],n:'🛕 The Ghat',sub:'Ghat Sector · along the river',x:-20,y:6,z:riverZ(-20)-8}];
+ for(const l of L){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${l.n}</b><span>${l.sub}</span>`;tagsEl.appendChild(el);l.el=el;LM.push(l)}}
+window.LANDMARKS=LM;
 ambassador(MX-HALF+8,MS.z+HALF-6,0);ambassador(MX+HALF-8,-1.8,Math.PI,'#2b2b2b');
 // ---- BRAND HOARDINGS (empty, free 10 days) ----
-const HO=[];function hoarding(x,z,ry){const g=grp(x,z,ry);for(const s of[-3,3])mesh(box(.35,6,.35),'#555',s,3,0,g);mesh(box(8.4,4.4,.3),'#ffffff',0,7.6,-.1,g);
- const t=board('YOUR BRAND HERE\nFree for 10 days\nDM @plot.unfolds','#ffd23a','#7a1a0a',8,4,0,7.6,.07,0,'bold 50px DejaVu Sans',g);mesh(box(8.6,.2,.8),'#333',0,5.3,.3,g);claim(x,z,9,2);HO.push(g);return g}
-hoarding(MX+HALF-6,MS.z-HALF+6,-.4);hoarding(MX-HALF+6,MS.z-HALF+6,.4);hoarding(30,-1.5,Math.PI);hoarding(-40,-1.5,Math.PI);hoarding(SEC[1].x+20,8,0);
+const HO=[];function hoarding(x,z,ry){const g=grp(x,z,ry);for(const s of[-4.5,4.5])mesh(box(.5,8,.5),'#555',s,4,0,g);mesh(box(13,6.6,.4),'#ffffff',0,10.5,-.15,g);
+ const t=board('YOUR BRAND HERE\nFree for 10 days\nDM us @plot.unfolds','#ffd23a','#b2001a',12.4,6,0,10.5,.07,0,'bold 64px DejaVu Sans',g);mesh(box(13,.25,1),'#333',0,7.1,.4,g);
+ const bk=board('YOUR BRAND HERE','#ffd23a','#b2001a',12.4,6,0,10.5,-.37,Math.PI,'bold 64px DejaVu Sans',g);claim(x,z,13,2);HO.push(g);
+ const el=document.createElement('div');el.className='lm ho';el.innerHTML='<b>📢 Ad spot: free 10 days</b><span>Your brand here · DM us</span>';tagsEl.appendChild(el);LM.push({k:['brand','hoarding','ad','ads'],n:'📢 Ad spot '+(HO.length),sub:'Your brand here, free for 10 days. DM @plot.unfolds',x,y:15,z,el,d:MOB?80:65});return g}
+// along the main road (z≈-6) and the ghat, all facing the default camera (+z)
+hoarding(SEC[0].x+12,-9,.15);hoarding(SEC[2].x-12,-9,-.1);hoarding(SEC[3].x+8,-9,-.2);hoarding(-40,6,0);hoarding(40,10,0);
 // ---- GHAT SECTOR along the river ----
 ghat(-20);temple(-60,8);peepal(20,9);well(50,8);rangoli(-14,4,1.4);
 for(let i=0;i<40;i++){const x=-60+R()*120;const z=riverZ(x)-12+R()*3;if(free(x,z,1,1,.2))person(x,z,null,pick(cloth),R()<.3)}
@@ -248,10 +261,10 @@ const home=MOB?{t:new THREE.Vector3(SEC[1].x+10,0,SEC[1].z-6),d:330}:{t:new THRE
 function placeCam(t,d,az=.35,el=.95){cam.position.set(t.x+d*Math.sin(el)*Math.sin(az),d*Math.cos(el),t.z+d*Math.sin(el)*Math.cos(az));ctl.target.copy(t)}
 placeCam(home.t,home.d);ctl.update();
 let fly=null;function flyTo(t,d,dur=1.8){fly={t0:performance.now(),dur:dur*1000,fromT:ctl.target.clone(),fromP:cam.position.clone(),toT:t.clone(),toP:new THREE.Vector3(t.x+d*.38,d*.62,t.z+d*.68)}}
-window.flyHome=()=>flyTo(home.t,home.d);
+window.flyHome=()=>flyTo(home.t,home.d);window.flyLM=i=>{const L=LM[i];ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,L.d?6:1,L.z),L.d||(MOB?55:45));return L};
 let hl=null;const ring=new THREE.Mesh(new THREE.RingGeometry(3.6,4.4,32),new THREE.MeshBasicMaterial({color:'#ff3d7f',transparent:true,opacity:.9,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.visible=false;scene.add(ring);
 const beam=new THREE.Mesh(cyl(.25,.25,30,8),new THREE.MeshBasicMaterial({color:'#ff3d7f',transparent:true,opacity:.35}));beam.visible=false;scene.add(beam);
-window.findHouse=function(q){q=(q||'').trim().replace(/^@/,'').toLowerCase();if(!q)return null;let P=BYNAME[q];if(!P){const m=Object.keys(BYNAME).filter(k=>k.includes(q));if(m.length)P=BYNAME[m[0]]}
+window.findHouse=function(q){q=(q||'').trim().replace(/^@/,'').toLowerCase();if(!q)return null;{const L=LM.find(L=>L.k.some(k=>k===q||(q.length>3&&k.startsWith(q))));if(L){ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,1,L.z),MOB?50:42);return {landmark:L}}}let P=BYNAME[q];if(!P){const m=Object.keys(BYNAME).filter(k=>k.includes(q));if(m.length)P=BYNAME[m[0]]}
  if(!P)return null;if(hl)hl.el.classList.remove('hl');hl=P;P.el.classList.add('hl');ring.position.set(P.h.x,.2,P.h.z);ring.visible=beam.visible=true;beam.position.set(P.h.x,15,P.h.z);flyTo(new THREE.Vector3(P.h.x,1,P.h.z),MOB?46:38);return P.h};
 window.suggest=q=>{q=q.replace(/^@/,'').toLowerCase();return q?Object.keys(BYNAME).filter(k=>k.includes(q)).slice(0,6):[]};
 window.TOWN={houses:DATA.houses,updated:DATA.updated,followers:DATA.followers,sectors:SEC};
@@ -260,6 +273,7 @@ addEventListener('resize',()=>{W=innerWidth;H=innerHeight;ren.setSize(W,H,false)
 const V=new THREE.Vector3();function scr(x,y,z){V.set(x,y,z).project(cam);return[(V.x+1)/2*W,(1-V.y)/2*H,V.z]}
 function labels(){const d=cam.position.distanceTo(ctl.target);const showH=d<170;
  for(const P of POP){const[x,y,z]=scr(P.h.x,P.top+1.6,P.h.z);const on=(showH||P===hl)&&z<1&&x>-80&&x<W+80&&y>-20&&y<H+40;P.el.style.display=on?'block':'none';if(on){const k=Math.max(.6,Math.min(1.25,60/d));P.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%) scale(${P===hl?Math.max(1,k):k})`}}
+ for(const L of LM){const[x,y,z]=scr(L.x,L.y,L.z);const on=z<1&&x>-80&&x<W+80&&y>-20&&y<H+40;L.el.style.display=on?'block':'none';if(on){const k=Math.max(.75,Math.min(1.3,120/d));L.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%) scale(${k})`}}
  for(const k in SECOBJ){const S=SECOBJ[k];const[x,y,z]=scr(S.x,8,S.z);const on=d>90&&z<1&&x>-60&&x<W+60&&y>40&&y<H;S.el.style.display=on?'block':'none';if(on)S.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`}}
 function animate(t){for(const n of NPC){const {a,b}=n.path;const L2=Math.hypot(b[0]-a[0],b[1]-a[1]);let u=((t*n.sp+n.ph)%(2*L2))/L2;const bk=u>1;if(bk)u=2-u;n.g.position.x=lerp(a[0],b[0],u);n.g.position.z=lerp(a[1],b[1],u);n.g.rotation.y=Math.atan2(b[0]-a[0],b[1]-a[1])+(bk?Math.PI:0)-(n.veh?Math.PI/2:0);if(!n.veh)n.g.position.y=Math.abs(Math.sin(t*8+n.ph))*.08}
  ripples.forEach((r,i)=>{r.material.opacity=.35+.3*Math.sin(t*2+i)});BULBS.forEach((b,i)=>{b.material.emissiveIntensity=.6+.8*(Math.sin(t*6+i*1.7)>0)});

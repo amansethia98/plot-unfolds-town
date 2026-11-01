@@ -177,7 +177,19 @@ DATA.houses.forEach((h,i)=>{claim(h.x,h.z,5,5);const nm='@'+h.username;const g=h
  if(h.upgrades.includes('garden')){for(const s of[-2,2])tree(h.x+s,h.z+3.6,.5,'mango')}
  const el=document.createElement('div');el.className='tag'+(h.type==='villa'?' villa':'');el.textContent=nm;tagsEl.appendChild(el);
  const P={g,el,top,h};POP.push(P);BYNAME[h.username]=P});
-const own=house(SEC[0].x+HALF-4,-12,0,'@plot.unfolds',2);
+const OWNX=SEC[0].x+HALF-4,OWNZ=-12;const OWN_VILLA=(DATA.own||{}).type==='villa';
+function bigVilla(x,z){const g=grp(x,z,0);const wc='#fff3d6';
+ mesh(box(9,.3,8),'#e8dcc4',0,.15,0,g);mesh(box(7,3.2,5.6),wc,0,1.9,0,g);mesh(box(7.4,.3,6),'#ffffff',0,3.6,0,g);mesh(box(5,2.8,4.4),wc,-.6,5.1,0,g);mesh(box(5.4,.25,4.8),'#ffffff',-.6,6.6,0,g);
+ const r=mesh(new THREE.ConeGeometry(3.6,2,4),'#c0392b',-.6,7.7,0,g);r.rotation.y=Math.PI/4;
+ for(const s of[-2.6,2.6])mesh(cyl(.25,.25,3.2,10),'#ffffff',s,1.9,3.1,g);mesh(box(7,.3,1.4),'#ffffff',0,3.6,3.3,g);// porch columns + balcony
+ for(let k=0;k<9;k++)mesh(box(.08,.6,.08),'#d4a017',-3.2+k*.8,4.05,3.95,g,{metalness:.5,roughness:.4});
+ mesh(box(1.3,2.2,.1),'#6b4a2e',0,1.4,2.85,g);for(const s of[-2,2])mesh(box(1,1.1,.1),'#6fb6d8',s,1.9,2.85,g,{roughness:.15});for(const s of[-2,.8])mesh(box(1,1,.1),'#6fb6d8',s,5.1,2.25,g,{roughness:.15});
+ mesh(box(2.4,.15,1.6),'#3fa9d8',3.2,.35,-2.4,g,{roughness:.1,metalness:.2});// tiny pool
+ for(const s of[-1,1])mesh(cyl(.12,.12,1.8,8),'#555',s*4.2,.9,3.8,g);board('VILLA','#7a3fd0','#ffe14a',2.6,.7,0,4.6,3.98,0,'bold 76px DejaVu Sans',g);
+ mesh(box(9,.8,.2),'#e9dcc0',0,.4,4,g);mesh(cyl(.3,.3,.15,10),'#d4a017',2.8,7.1,-1.4,g,{metalness:.6});// gate wall + dish
+ for(const s of[-3.8,3.8])tree(x+s,z-3.4,.6,'mango');rangoli(x,z+5,1.1);
+ g.updateMatrixWorld();marigold(new THREE.Vector3(x-3.5,3.4,z+3.95),new THREE.Vector3(x+3.5,3.4,z+3.95),14,.5);return g}
+const own=OWN_VILLA?bigVilla(OWNX,OWNZ):house(OWNX,OWNZ,0,'@plot.unfolds',2);
 // ---- MARKET SECTOR: Food market by @ft.georrrrrr ----
 const MS=SEC.find(s=>s.kind==='market');const MX=MS.x,MZ=MS.z+10;const MT=0;
 {const g=popg(MX,MZ,0,0);const p=mesh(box(22,.06,11),'#d9bb8c',0,.12,0,g);p.castShadow=false;
@@ -193,6 +205,17 @@ const CROWD=[];for(let i=0;i<40;i++){const x=-9+R()*18,z=-1.1+R()*2.2;const p=pe
 kirana(MX-14,MS.z-14);tapri(MX+12,MS.z-14);
 {const g=grp(MX+2,MS.z-16,0);mesh(box(1.8,2.8,1.8),'#f7cc16',0,1.4,0,g);mesh(box(2,.25,2),'#d32f2f',0,2.9,0,g);board('STD ISD PCO','#d32f2f','#fff6c0',2.2,.6,0,3.4,.95,0,'bold 76px DejaVu Sans',g)}
 {const g=grp(MX-2,MS.z-4,0);for(const s of[-1.4,1.4])mesh(cyl(.08,.08,3.2,6),'#6b4a2e',s,1.6,0,g);board('CYBER CAFÉ\n₹20/hr','#1f5fbf','#ffffff',3.4,1.6,0,3,.06,0,'bold 76px DejaVu Sans',g)}
+// ---- GAMING CAFE (Day 2, top comment by @rathod750728) ----
+function gamingCafe(x,z,t0){const g=popg(x,z,0,t0);mesh(box(9,.08,7),'#cfb48a',0,.1,0,g).castShadow=false;
+ mesh(box(8,3.2,5),'#2b3f8f',0,1.6,-.6,g);mesh(box(8.4,.25,5.4),'#e9e2d2',0,3.3,-.6,g);mesh(box(8,.12,1.8),'#ff3d7f',0,2.7,2.6,g);
+ board('GAMING CAFE','#111a3a','#39ff6a',7.6,1.3,0,4.2,1.95,0,'bold 70px DejaVu Sans Mono',g);
+ board('₹10/hr · CS 1.6 · NFS · Road Rash','#ffd23a','#1a1a3a',6.6,.55,0,3.0,1.97,0,'bold 34px DejaVu Sans',g);
+ for(let k=0;k<4;k++){const xx=-2.7+k*1.8;mesh(box(1.5,.08,.9),'#7a5232',xx,1.0,2.2,g);mesh(box(.9,.75,.75),'#e8e0cc',xx,1.45,2.0,g);mesh(box(.7,.55,.04),'#2fd0ff',xx,1.5,2.4,g,{emissive:'#1fb8ff',emissiveIntensity:1});
+  const kid=person(0,0,null,pick(cloth),true);g.attach(kid);kid.position.set(xx,0,2.95);kid.rotation.y=Math.PI;}
+ board('LAN PARTY\nTONIGHT','#e83a5a','#fff6c0',2,1.2,3.4,1.2,3.3,0,'bold 60px DejaVu Sans',g);
+ board('by @rathod750728 · 8 likes','#fff6d8','#7a2a0a',4.6,.55,-1.4,.5,1.95,0,'bold 40px DejaVu Sans',g);
+ mesh(cyl(.3,.3,.15,10),'#c0c0c0',2.6,3.6,-2,g,{metalness:.6});claim(x,z,9,7);return g}
+const GC=gamingCafe(MX+16,MS.z-3,(window.TL&&window.TL.cafe)||0);
 ambassador(MX-HALF+8,MS.z+HALF-6,0);ambassador(MX+HALF-8,-1.8,Math.PI,'#2b2b2b');
 // ---- BRAND HOARDINGS (empty, free 10 days) ----
 const HO=[];function hoarding(x,z,ry){const g=grp(x,z,ry);for(const s of[-3,3])mesh(box(.35,6,.35),'#555',s,3,0,g);mesh(box(8.4,4.4,.3),'#ffffff',0,7.6,-.1,g);

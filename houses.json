@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-31",
- "followers": 57,
+ "updated": "2026-11-01",
+ "followers": 92,
  "grid": {
   "cols": 4,
   "pitch": 64,
@@ -71,9 +71,391 @@
    "likes": 15,
    "day": 1,
    "sector": 3
+  },
+  {
+   "name": "Gaming Cafe",
+   "by": "rathod750728",
+   "likes": 8,
+   "day": 2,
+   "sector": 3
   }
  ],
+ "own": {
+  "username": "plot.unfolds",
+  "type": "villa",
+  "note": "demo villa: tag 3 friends to upgrade"
+ },
  "houses": [
+  {
+   "username": "mera_bhai_jeetu____rahu__",
+   "sector": 2,
+   "society": "Nokia 3310 Heights",
+   "x": -9,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "guruvatsav",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -27,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "btw_its._yashika",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -21,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ronak1572013",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -15,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "itsshannon56",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -9,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "sudheerdachavaram",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -27,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "j_bleh54",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -21,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "naitik_nayak2016",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -15,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ishanis_wonderland",
+   "sector": 2,
+   "society": "Ambassador Gardens",
+   "x": -9,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "vihaan.88727",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 73,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "aartililahar",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 79,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "vinayak_nigam025",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 85,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "shiva_thakur_1923",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 91,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "shekharsaxena724",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 73,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ayush_051212",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 79,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "oggyogfans_",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 85,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "golden_gooner_",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 91,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "fr_im4mmm",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 101,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "kristnxv_",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 107,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "devz_y1",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 113,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "thefriendyourmomwarnedyouabout",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 119,
+   "z": -54,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "rebel_rose_kanishka",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 101,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "om_namah_shivaya_1214",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 107,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "hritik.kapadia",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 113,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "am1r_ys",
+   "sector": 4,
+   "society": "Parle-G Park",
+   "x": 119,
+   "z": -45,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "__navyaa_19",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 73,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "yeki8285",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 79,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "a_kiarification",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 85,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "_aarush._.anand_",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 91,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "tejas_mishra_100",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 73,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "gaganxyl",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 79,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "me__vidit",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 85,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "chaos_tanvi",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 91,
+   "z": -17,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "aanyaa__l",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 101,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "xchaitra77",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 107,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "mikey.eclipsed",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 113,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "manya60663",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 119,
+   "z": -26,
+   "since": "2026-11-01",
+   "type": "house",
+   "upgrades": []
+  },
   {
    "username": "__koyomi_",
    "sector": 1,
@@ -190,16 +572,6 @@
    "society": "Chitrahaar CHS",
    "x": -73,
    "z": -54,
-   "since": "2026-10-31",
-   "type": "house",
-   "upgrades": []
-  },
-  {
-   "username": "henisha.24",
-   "sector": 1,
-   "society": "Chitrahaar CHS",
-   "x": -91,
-   "z": -45,
    "since": "2026-10-31",
    "type": "house",
    "upgrades": []
@@ -505,16 +877,6 @@
    "upgrades": []
   },
   {
-   "username": "diva.creation564",
-   "sector": 2,
-   "society": "Nokia 3310 Heights",
-   "x": -9,
-   "z": -54,
-   "since": "2026-10-31",
-   "type": "house",
-   "upgrades": []
-  },
-  {
    "username": "suchisuchi47",
    "sector": 2,
    "society": "Nokia 3310 Heights",
@@ -575,6 +937,16 @@
    "upgrades": []
   },
   {
+   "username": "henisha.24",
+   "sector": 1,
+   "society": "Chitrahaar CHS",
+   "x": -91,
+   "z": -45,
+   "since": "2026-10-31",
+   "type": "house",
+   "upgrades": []
+  },
+  {
    "username": "biriyaniiafterintensesex",
    "sector": 2,
    "society": "Cassette Colony",
@@ -630,16 +1002,6 @@
    "society": "Cassette Colony",
    "x": -37,
    "z": -17,
-   "since": "2026-10-31",
-   "type": "house",
-   "upgrades": []
-  },
-  {
-   "username": "amansethia_",
-   "sector": 2,
-   "society": "Ambassador Gardens",
-   "x": -27,
-   "z": -26,
    "since": "2026-10-31",
    "type": "house",
    "upgrades": []

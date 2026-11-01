@@ -124,7 +124,7 @@ function stall(x,z,ry,name,price,col,t0,kind){const g=popg(x,z,ry,t0);
  if(kind==='vada')for(let k=0;k<6;k++)mesh(new THREE.SphereGeometry(.16,6,4),'#d9a050',-.8+k*.3,1.3,0,g);
  const v=person(0,-1.1,null,pick(cloth));g.attach(v);v.position.set(0,0,-1.2);return g}
 
-function texT(txt,bg,fg,w,h,font){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,w,h);x.fillStyle=fg;x.font=font;x.textAlign='center';x.textBaseline='middle';const L2=txt.split('\n');L2.forEach((l,i)=>x.fillText(l,w/2,h/2+(i-(L2.length-1)/2)*h/L2.length));const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
+function texT(txt,bg,fg,w,h,font){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,w,h);x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';const L2=txt.split('\n');let fs=+(font.match(/(\d+)px/)||[0,60])[1];const fit=()=>{x.font=font.replace(/\d+px/,fs+'px');return Math.max(...L2.map(l=>x.measureText(l).width))<=w*.86&&fs*1.15*L2.length<=h*.86};while(fs>8&&!fit())fs-=2;L2.forEach((l,i)=>x.fillText(l,w/2,h/2+(i-(L2.length-1)/2)*h/L2.length));const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
 function board(txt,bg,fg,w,h,x,y,z,ry=0,font='bold 60px DejaVu Sans',p=scene){const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:texT(txt,bg,fg,512,Math.round(512*h/w),font)}));m.position.set(x,y,z);m.rotation.y=ry;p.add(m);return m}
 
 function ambassador(x,z,ry,col='#f4f1ea'){const g=grp(x,z,ry);mesh(box(4.4,.8,1.8),col,0,.75,0,g,{roughness:.35});mesh(box(2.4,.8,1.66),col,-.15,1.55,0,g,{roughness:.35});
@@ -152,7 +152,7 @@ for(let c=0;c<=cols;c++)road2(minX+c*P2,(minZ+maxZ)/2,8,maxZ-minZ+8);
 for(let r=0;r<=ROWS;r++)road2((minX+maxX)/2,-r*P2-4+ (r?0:0) - (r?0:0),maxX-minX+8,8);
 // sector ground tiles + kerbs
 const SECOBJ={};
-function secLabel(n,txt,sub,x,z){const el=document.createElement('div');el.className='sec';el.innerHTML=`<b>Sector ${n}</b><span>${sub}</span>`;tagsEl.appendChild(el);SECOBJ[n]={el,x,z}}
+function secLabel(n,txt,sub,x,z){const el=document.createElement('div');el.className='sec';el.innerHTML=`<b>Sector ${n}</b>`;tagsEl.appendChild(el);SECOBJ[n]={el,x,z}}
 for(const s of SEC){const col=s.kind==='green'?'#7fbf5a':s.kind==='market'?'#e8cfa0':'#d9cfae';const t=mesh(box(SZ,.1,SZ),col,s.x,.05,s.z-0);t.castShadow=false;
  // stone sector number on the corner
  board(`SECTOR ${s.n}`,'#fffaf0','#b2401a',6,1.4,s.x-HALF+4,1.6,s.z+HALF-.5,0,'bold 70px DejaVu Sans');for(const q of[-2.6,2.6])mesh(box(.2,1,.2),'#888',s.x-HALF+4+q,.5,s.z+HALF-.5);
@@ -222,16 +222,16 @@ function gamingCafe(x,z,t0){const g=popg(x,z,0,t0);mesh(box(9,.08,7),'#cfb48a',0
 const GC=gamingCafe(MX+16,MS.z-3,(window.TL&&window.TL.cafe)||0);
 // landmark labels (always visible HTML tags) + searchable landmarks
 const LM=[{k:['gaming cafe','gaming','cafe','rathod750728'],n:'🎮 Gaming Cafe',sub:'Sector 3 · by @rathod750728',x:MX+16,y:9,z:MS.z-3},{k:['food market','market','food'],n:'🍢 Food Market',sub:'Sector 3 · by @ft.georrrrrr',x:MX,y:7,z:MZ}];
-for(const L of LM){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${L.n}</b><span>${L.sub}</span>`;tagsEl.appendChild(el);L.el=el}
+for(const L of LM){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${L.n}</b>`;tagsEl.appendChild(el);L.el=el}
 {const L=[{k:['villa','plot.unfolds'],n:'🏰 plot.unfolds Villa',sub:'Tag 3 friends to get a villa',x:OWNX,y:11,z:OWNZ},{k:['ghat','river','temple'],n:'🛕 The Ghat',sub:'Ghat Sector · along the river',x:-20,y:6,z:riverZ(-20)-8}];
- for(const l of L){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${l.n}</b><span>${l.sub}</span>`;tagsEl.appendChild(el);l.el=el;LM.push(l)}}
+ for(const l of L){const el=document.createElement('div');el.className='lm';el.innerHTML=`<b>${l.n.replace('plot.unfolds ','')}</b>`;tagsEl.appendChild(el);l.el=el;LM.push(l)}}
 window.LANDMARKS=LM;
 ambassador(MX-HALF+8,MS.z+HALF-6,0);ambassador(MX+HALF-8,-1.8,Math.PI,'#2b2b2b');
 // ---- BRAND HOARDINGS (empty, free 10 days) ----
 const HO=[];function hoarding(x,z,ry){const g=grp(x,z,ry);for(const s of[-4.5,4.5])mesh(box(.5,8,.5),'#555',s,4,0,g);mesh(box(13,6.6,.4),'#ffffff',0,10.5,-.15,g);
- const t=board('YOUR BRAND HERE\nFree for 10 days\nDM us @plot.unfolds','#ffd23a','#b2001a',12.4,6,0,10.5,.07,0,'bold 64px DejaVu Sans',g);mesh(box(13,.25,1),'#333',0,7.1,.4,g);
+ const t=board('YOUR BRAND HERE\nFree 10 days\nDM @plot.unfolds','#ffd23a','#b2001a',12.4,6,0,10.5,.07,0,'bold 64px DejaVu Sans',g);mesh(box(13,.25,1),'#333',0,7.1,.4,g);
  const bk=board('YOUR BRAND HERE','#ffd23a','#b2001a',12.4,6,0,10.5,-.37,Math.PI,'bold 64px DejaVu Sans',g);claim(x,z,13,2);HO.push(g);
- const el=document.createElement('div');el.className='lm ho';el.innerHTML='<b>📢 Ad spot: free 10 days</b><span>Your brand here · DM us</span>';tagsEl.appendChild(el);LM.push({k:['brand','hoarding','ad','ads'],n:'📢 Ad spot '+(HO.length),sub:'Your brand here, free for 10 days. DM @plot.unfolds',x,y:15,z,el,d:MOB?80:65});return g}
+ const el=document.createElement('div');el.className='lm ho';el.innerHTML='<b>📢 Ad spot</b>';tagsEl.appendChild(el);LM.push({k:['brand','hoarding','ad','ads'],n:'📢 Ad spot '+(HO.length),sub:'Your brand here, free for 10 days. DM @plot.unfolds',x,y:15,z,el,d:MOB?80:65});return g}
 // along the main road (z≈-6) and the ghat, all facing the default camera (+z)
 hoarding(SEC[0].x+12,-9,.15);hoarding(SEC[2].x-12,-9,-.1);hoarding(SEC[3].x+8,-9,-.2);hoarding(-40,6,0);hoarding(40,10,0);
 // ---- GHAT SECTOR along the river ----
@@ -261,19 +261,19 @@ const home=MOB?{t:new THREE.Vector3(SEC[1].x+10,0,SEC[1].z-6),d:330}:{t:new THRE
 function placeCam(t,d,az=.35,el=.95){cam.position.set(t.x+d*Math.sin(el)*Math.sin(az),d*Math.cos(el),t.z+d*Math.sin(el)*Math.cos(az));ctl.target.copy(t)}
 placeCam(home.t,home.d);ctl.update();
 let fly=null;function flyTo(t,d,dur=1.8){fly={t0:performance.now(),dur:dur*1000,fromT:ctl.target.clone(),fromP:cam.position.clone(),toT:t.clone(),toP:new THREE.Vector3(t.x+d*.38,d*.62,t.z+d*.68)}}
-window.flyHome=()=>flyTo(home.t,home.d);window.flyLM=i=>{const L=LM[i];ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,L.d?6:1,L.z),L.d||(MOB?55:45));return L};
+window.flyHome=()=>flyTo(home.t,home.d);window.flyLM=i=>{const L=LM[i];window.SELLM=L;ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,L.d?6:1,L.z),L.d||(MOB?55:45));return L};
 let hl=null;const ring=new THREE.Mesh(new THREE.RingGeometry(3.6,4.4,32),new THREE.MeshBasicMaterial({color:'#ff3d7f',transparent:true,opacity:.9,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.visible=false;scene.add(ring);
 const beam=new THREE.Mesh(cyl(.25,.25,30,8),new THREE.MeshBasicMaterial({color:'#ff3d7f',transparent:true,opacity:.35}));beam.visible=false;scene.add(beam);
-window.findHouse=function(q){q=(q||'').trim().replace(/^@/,'').toLowerCase();if(!q)return null;{const L=LM.find(L=>L.k.some(k=>k===q||(q.length>3&&k.startsWith(q))));if(L){ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,1,L.z),MOB?50:42);return {landmark:L}}}let P=BYNAME[q];if(!P){const m=Object.keys(BYNAME).filter(k=>k.includes(q));if(m.length)P=BYNAME[m[0]]}
+window.findHouse=function(q){q=(q||'').trim().replace(/^@/,'').toLowerCase();if(!q)return null;{const L=LM.find(L=>L.k.some(k=>k===q||(q.length>3&&k.startsWith(q))));if(L){window.SELLM=L;ring.visible=beam.visible=false;flyTo(new THREE.Vector3(L.x,1,L.z),MOB?50:42);return {landmark:L}}}let P=BYNAME[q];if(!P){const m=Object.keys(BYNAME).filter(k=>k.includes(q));if(m.length)P=BYNAME[m[0]]}
  if(!P)return null;if(hl)hl.el.classList.remove('hl');hl=P;P.el.classList.add('hl');ring.position.set(P.h.x,.2,P.h.z);ring.visible=beam.visible=true;beam.position.set(P.h.x,15,P.h.z);flyTo(new THREE.Vector3(P.h.x,1,P.h.z),MOB?46:38);return P.h};
 window.suggest=q=>{q=q.replace(/^@/,'').toLowerCase();return q?Object.keys(BYNAME).filter(k=>k.includes(q)).slice(0,6):[]};
 window.TOWN={houses:DATA.houses,updated:DATA.updated,followers:DATA.followers,sectors:SEC};
 addEventListener('resize',()=>{W=innerWidth;H=innerHeight;ren.setSize(W,H,false);cam.aspect=W/H;cam.updateProjectionMatrix()});
 // ================= LOOP =================
 const V=new THREE.Vector3();function scr(x,y,z){V.set(x,y,z).project(cam);return[(V.x+1)/2*W,(1-V.y)/2*H,V.z]}
-function labels(){const d=cam.position.distanceTo(ctl.target);const showH=d<170;
+function labels(){const d=cam.position.distanceTo(ctl.target);const showH=d<(MOB?95:120);
  for(const P of POP){const[x,y,z]=scr(P.h.x,P.top+1.6,P.h.z);const on=(showH||P===hl)&&z<1&&x>-80&&x<W+80&&y>-20&&y<H+40;P.el.style.display=on?'block':'none';if(on){const k=Math.max(.6,Math.min(1.25,60/d));P.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%) scale(${P===hl?Math.max(1,k):k})`}}
- for(const L of LM){const[x,y,z]=scr(L.x,L.y,L.z);const on=z<1&&x>-80&&x<W+80&&y>-20&&y<H+40;L.el.style.display=on?'block':'none';if(on){const k=Math.max(.75,Math.min(1.3,120/d));L.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%) scale(${k})`}}
+ for(const L of LM){const[x,y,z]=scr(L.x,L.y,L.z);const on=L===window.SELLM&&!fly&&z<1&&x>-80&&x<W+80&&y>-20&&y<H+40;L.el.style.display=on?'block':'none';if(on){L.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`}}
  for(const k in SECOBJ){const S=SECOBJ[k];const[x,y,z]=scr(S.x,8,S.z);const on=d>90&&z<1&&x>-60&&x<W+60&&y>40&&y<H;S.el.style.display=on?'block':'none';if(on)S.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`}}
 function animate(t){for(const n of NPC){const {a,b}=n.path;const L2=Math.hypot(b[0]-a[0],b[1]-a[1]);let u=((t*n.sp+n.ph)%(2*L2))/L2;const bk=u>1;if(bk)u=2-u;n.g.position.x=lerp(a[0],b[0],u);n.g.position.z=lerp(a[1],b[1],u);n.g.rotation.y=Math.atan2(b[0]-a[0],b[1]-a[1])+(bk?Math.PI:0)-(n.veh?Math.PI/2:0);if(!n.veh)n.g.position.y=Math.abs(Math.sin(t*8+n.ph))*.08}
  ripples.forEach((r,i)=>{r.material.opacity=.35+.3*Math.sin(t*2+i)});BULBS.forEach((b,i)=>{b.material.emissiveIntensity=.6+.8*(Math.sin(t*6+i*1.7)>0)});
@@ -285,5 +285,5 @@ const clock=new THREE.Clock();
 function frame(){const t=clock.getElapsedTime();if(fly){let u=Math.min(1,(performance.now()-fly.t0)/fly.dur);const e=ease(u);ctl.target.lerpVectors(fly.fromT,fly.toT,e);cam.position.lerpVectors(fly.fromP,fly.toP,e);cam.position.y+=Math.sin(u*Math.PI)*60;if(u>=1)fly=null}
  animate(t);ctl.update();ren.render(scene,cam);labels()}
 ren.setAnimationLoop(frame);
-ctl.addEventListener('start',()=>{fly=null});
+ctl.addEventListener('start',()=>{fly=null});ren.domElement.addEventListener('pointerdown',()=>{window.SELLM=null});
 window.ready=true;document.body.classList.add('loaded');

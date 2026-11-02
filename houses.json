@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-01",
- "followers": 92,
+ "updated": "2026-11-02",
+ "followers": 121,
  "grid": {
   "cols": 4,
   "pitch": 64,
@@ -87,6 +87,326 @@
  },
  "houses": [
   {
+   "username": "farhan_77812",
+   "sector": 1,
+   "society": "Maggi Vihar",
+   "x": -79,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "myaank_x_kage",
+   "sector": 4,
+   "society": "Chetak Kunj",
+   "x": 91,
+   "z": -45,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "hdr_hemi",
+   "sector": 4,
+   "society": "Rangoli Apartments",
+   "x": 91,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "dakshin123456",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 101,
+   "z": -26,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "imjustmeccai.m",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 101,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "shaiii.mundi",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 107,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "r.i.t.h.u.z_",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 113,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "garv_rastogi1",
+   "sector": 4,
+   "society": "Malgudi Residency",
+   "x": 119,
+   "z": -17,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "teribehenmeribiwi_johhn",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -119,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "shaheer_syed016",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -113,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "adarsh0_xx",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -107,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "binacholekebhature",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -101,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "__joshithhh__00",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -119,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ykamnk",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -113,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "d3caying15",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -107,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "gk_gaming_91_yt",
+   "sector": 5,
+   "society": "Tazo Towers",
+   "x": -101,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "baller.zidan",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -91,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "kallu67670",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -85,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "declaaaannnn",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -79,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ajddkeiddn",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -73,
+   "z": -118,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "cocosweets.pk",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -91,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "lil._alu",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -85,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "its_me_srivatsav__",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -79,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "mom.of.2boys",
+   "sector": 5,
+   "society": "Frooti Enclave",
+   "x": -73,
+   "z": -109,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "lucky.girl.syndrome5",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -119,
+   "z": -90,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "drunk_panda.wav",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -113,
+   "z": -90,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "mahesh.yadav.indiannavy",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -107,
+   "z": -90,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "devaansh_194",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -101,
+   "z": -90,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "ad.it.ya.sing__h",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -119,
+   "z": -81,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "starluxetech",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -113,
+   "z": -81,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "charlshusk",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -107,
+   "z": -81,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
+   "username": "endny007",
+   "sector": 5,
+   "society": "Pager Puram",
+   "x": -101,
+   "z": -81,
+   "since": "2026-11-02",
+   "type": "house",
+   "upgrades": []
+  },
+  {
    "username": "mera_bhai_jeetu____rahu__",
    "sector": 2,
    "society": "Nokia 3310 Heights",
@@ -103,7 +423,7 @@
    "x": -27,
    "z": -26,
    "since": "2026-11-01",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -247,12 +567,12 @@
    "upgrades": []
   },
   {
-   "username": "golden_gooner_",
-   "sector": 4,
-   "society": "Chetak Kunj",
-   "x": 91,
-   "z": -45,
-   "since": "2026-11-01",
+   "username": "4party_next_door",
+   "sector": 5,
+   "society": "Cyber Cafe Colony",
+   "x": -91,
+   "z": -90,
+   "since": "2026-11-02",
    "type": "house",
    "upgrades": []
   },
@@ -353,7 +673,7 @@
    "x": 79,
    "z": -26,
    "since": "2026-11-01",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -407,26 +727,6 @@
    "upgrades": []
   },
   {
-   "username": "chaos_tanvi",
-   "sector": 4,
-   "society": "Rangoli Apartments",
-   "x": 91,
-   "z": -17,
-   "since": "2026-11-01",
-   "type": "house",
-   "upgrades": []
-  },
-  {
-   "username": "aanyaa__l",
-   "sector": 4,
-   "society": "Malgudi Residency",
-   "x": 101,
-   "z": -26,
-   "since": "2026-11-01",
-   "type": "house",
-   "upgrades": []
-  },
-  {
    "username": "xchaitra77",
    "sector": 4,
    "society": "Malgudi Residency",
@@ -463,7 +763,7 @@
    "x": -119,
    "z": -54,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -747,16 +1047,6 @@
    "upgrades": []
   },
   {
-   "username": "rathod750728",
-   "sector": 1,
-   "society": "Maggi Vihar",
-   "x": -79,
-   "z": -17,
-   "since": "2026-10-31",
-   "type": "house",
-   "upgrades": []
-  },
-  {
    "username": "aadi_fxkevo",
    "sector": 1,
    "society": "Maggi Vihar",
@@ -823,7 +1113,7 @@
    "x": -49,
    "z": -45,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -833,7 +1123,7 @@
    "x": -43,
    "z": -45,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -893,7 +1183,7 @@
    "x": -21,
    "z": -45,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -903,7 +1193,7 @@
    "x": -15,
    "z": -45,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
@@ -913,7 +1203,7 @@
    "x": -9,
    "z": -45,
    "since": "2026-10-31",
-   "type": "house",
+   "type": "villa",
    "upgrades": []
   },
   {
